@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Cosmix (玄象) · Support Center</title>
+  <title>开物 Kaiwu · Support Center</title>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
       font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Helvetica Neue", sans-serif;
-      background: linear-gradient(135deg, #0d0d1a 0%, #1a0a2e 50%, #0a1628 100%);
-      color: #e8e0f0;
+      background: #f8fafc;
+      color: #1e293b;
       min-height: 100vh;
       padding: 40px 20px;
     }
@@ -17,35 +17,42 @@
     .header { text-align: center; padding: 48px 0 40px; }
     .app-icon {
       width: 96px; height: 96px; border-radius: 22px;
-      background: linear-gradient(135deg, #6b46c1, #4f46e5);
+      background: linear-gradient(135deg, #6366f1, #0ea5e9, #06b6d4);
       display: inline-flex; align-items: center; justify-content: center;
-      font-size: 48px; margin-bottom: 16px;
-      box-shadow: 0 8px 32px rgba(107, 70, 193, 0.4);
+      margin-bottom: 16px;
+      box-shadow: 0 8px 32px rgba(99, 102, 241, 0.25);
+      position: relative;
     }
-    h1 { font-size: 28px; font-weight: 700; color: #fff; margin-bottom: 8px; }
-    .subtitle { color: #a78bfa; font-size: 14px; letter-spacing: 2px; }
+    .app-icon .page {
+      width: 28px; height: 42px; border-radius: 6px;
+      background: rgba(255,255,255,0.5); position: absolute;
+    }
+    .app-icon .page:nth-child(1) { transform: rotate(-12deg); background: rgba(255,255,255,0.3); }
+    .app-icon .page:nth-child(2) { background: rgba(255,255,255,0.5); }
+    .app-icon .page:nth-child(3) { transform: rotate(12deg); background: rgba(255,255,255,0.75); }
+    h1 { font-size: 28px; font-weight: 700; color: #0f172a; margin-bottom: 8px; }
+    .subtitle { color: #6366f1; font-size: 14px; letter-spacing: 2px; }
     .card {
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(255,255,255,0.1);
+      background: #fff;
+      border: 1px solid #e2e8f0;
       border-radius: 16px;
       padding: 28px;
       margin-bottom: 20px;
-      backdrop-filter: blur(12px);
+      box-shadow: 0 1px 3px rgba(0,0,0,0.04);
     }
-    h2 { font-size: 18px; font-weight: 600; color: #c4b5fd; margin-bottom: 16px; }
-    h3 { font-size: 15px; font-weight: 600; color: #ddd6fe; margin-bottom: 8px; margin-top: 16px; }
-    p { font-size: 14px; line-height: 1.8; color: #c8c0d8; margin-bottom: 12px; }
+    h2 { font-size: 18px; font-weight: 600; color: #0f172a; margin-bottom: 16px; }
+    p { font-size: 14px; line-height: 1.8; color: #475569; margin-bottom: 12px; }
     p:last-child { margin-bottom: 0; }
     ul { list-style: none; padding: 0; }
-    ul li { font-size: 14px; line-height: 1.8; color: #c8c0d8; padding-left: 20px; position: relative; margin-bottom: 6px; }
-    ul li::before { content: "·"; position: absolute; left: 6px; color: #a78bfa; font-weight: bold; }
+    ul li { font-size: 14px; line-height: 1.8; color: #475569; padding-left: 20px; position: relative; margin-bottom: 6px; }
+    ul li::before { content: "·"; position: absolute; left: 6px; color: #6366f1; font-weight: bold; }
     .faq-item { margin-bottom: 20px; }
     .faq-item:last-child { margin-bottom: 0; }
-    .faq-q { font-size: 14px; font-weight: 600; color: #e8e0f0; margin-bottom: 6px; }
-    .faq-a { font-size: 14px; color: #c8c0d8; line-height: 1.8; }
+    .faq-q { font-size: 14px; font-weight: 600; color: #0f172a; margin-bottom: 6px; }
+    .faq-a { font-size: 14px; color: #475569; line-height: 1.8; }
     .contact-link {
       display: inline-block;
-      background: linear-gradient(135deg, #6b46c1, #4f46e5);
+      background: linear-gradient(135deg, #6366f1, #0ea5e9);
       color: #fff;
       text-decoration: none;
       padding: 12px 28px;
@@ -56,15 +63,13 @@
       transition: opacity 0.2s;
     }
     .contact-link:hover { opacity: 0.9; }
-    .text-link { color: #a78bfa; text-decoration: none; border-bottom: 1px solid rgba(167,139,250,0.3); }
-    .text-link:hover { border-bottom-color: #a78bfa; }
-    .lang-toggle {
-      text-align: center; margin-bottom: 32px;
-    }
+    .text-link { color: #6366f1; text-decoration: none; border-bottom: 1px solid rgba(99,102,241,0.3); }
+    .text-link:hover { border-bottom-color: #6366f1; }
+    .lang-toggle { text-align: center; margin-bottom: 32px; }
     .lang-btn {
-      background: rgba(255,255,255,0.08);
-      border: 1px solid rgba(255,255,255,0.15);
-      color: #c8c0d8;
+      background: #f1f5f9;
+      border: 1px solid #e2e8f0;
+      color: #64748b;
       padding: 8px 20px;
       border-radius: 8px;
       font-size: 13px;
@@ -72,15 +77,16 @@
       margin: 0 4px;
       transition: all 0.2s;
     }
-    .lang-btn.active { background: rgba(107, 70, 193, 0.4); color: #fff; border-color: #6b46c1; }
-    .lang-btn:hover { background: rgba(255,255,255,0.12); }
+    .lang-btn.active { background: #6366f1; color: #fff; border-color: #6366f1; }
+    .lang-btn:hover { background: #e2e8f0; }
+    .lang-btn.active:hover { background: #4f46e5; }
     .zh, .en { display: none; }
     .show-zh .zh { display: block; }
     .show-en .en { display: block; }
     .disclaimer {
       text-align: center;
       font-size: 12px;
-      color: rgba(255,255,255,0.3);
+      color: #94a3b8;
       margin-top: 40px;
       padding-bottom: 20px;
       line-height: 1.8;
@@ -90,9 +96,13 @@
 <body>
   <div class="container show-zh" id="content">
     <div class="header">
-      <div class="app-icon">☯</div>
-      <h1>Cosmix · 玄象</h1>
-      <div class="subtitle">Chinese Metaphysics · 中华命理智慧</div>
+      <div class="app-icon">
+        <div class="page"></div>
+        <div class="page"></div>
+        <div class="page"></div>
+      </div>
+      <h1>开物 · Kaiwu</h1>
+      <div class="subtitle">中华传统文化学习平台</div>
     </div>
 
     <div class="lang-toggle">
@@ -104,45 +114,40 @@
     <div class="zh">
       <div class="card">
         <h2>应用简介</h2>
-        <p>玄象是一款专注于中华传统命理文化的教育与娱乐应用，融合七大经典命理体系：</p>
+        <p>开物是一款专注于中华传统文化知识学习的教育应用，提供系统化的课程体系：</p>
         <ul>
-          <li><strong>易经占卜</strong> — 64卦完整体系，含卦辞、象辞与变卦分析</li>
-          <li><strong>梅花易数</strong> — 体用法分析，三卦互动解读</li>
-          <li><strong>五行分析</strong> — 金木水火土平衡评估与哲学映射</li>
-          <li><strong>八字命理</strong> — 四柱天干地支全面解析</li>
-          <li><strong>紫微斗数</strong> — 14主星、12宫位专业排盘与交互式星盘</li>
-          <li><strong>姓名测算</strong> — 五格剖象法与八字五行联动分析</li>
-          <li><strong>双人配对</strong> — 生肖、五行、日主多维兼容性评估</li>
+          <li><strong>易经入门</strong> — 太极阴阳、八卦、六十四卦系统讲解</li>
+          <li><strong>五行学说</strong> — 五行生克、对应关系、哲学应用</li>
+          <li><strong>天干地支</strong> — 干支纪年、六十甲子、纳音五行</li>
+          <li><strong>紫微斗数入门</strong> — 十二宫位、十四主星、星曜体系</li>
+          <li><strong>八字命理基础</strong> — 四柱概念、日主、十神体系</li>
+          <li><strong>姓名学基础</strong> — 五格剖象法、笔画分析</li>
         </ul>
-        <p>所有计算均在设备本地完成，不收集任何用户数据，全面保护隐私。</p>
-        <p style="color: rgba(255,255,255,0.4); font-size: 13px;">本应用仅供娱乐参考，不构成任何专业建议。请勿迷信。</p>
+        <p>每节课配有互动测验，帮助检验学习效果。所有数据仅存储在本地设备上。</p>
+        <p style="color: #94a3b8; font-size: 13px;">仅供文化学习参考。</p>
       </div>
 
       <div class="card">
         <h2>常见问题</h2>
         <div class="faq-item">
           <div class="faq-q">Q：应用会收集我的个人信息吗？</div>
-          <div class="faq-a">A：不会。玄象所有功能均在设备本地运行，不需要账号注册，不上传任何数据到服务器。详情请查阅 <a href="privacy.html" class="text-link">隐私政策</a>。</div>
+          <div class="faq-a">A：不会。开物所有功能均在设备本地运行，不需要账号注册，不上传任何数据到服务器。详情请查阅 <a href="privacy.html" class="text-link">隐私政策</a>。</div>
         </div>
         <div class="faq-item">
-          <div class="faq-q">Q：占卜历史记录会丢失吗？</div>
-          <div class="faq-a">A：历史记录保存在您的设备本地存储中。卸载应用会清除历史记录，建议使用收藏功能保存重要结果。</div>
+          <div class="faq-q">Q：学习进度会丢失吗？</div>
+          <div class="faq-a">A：学习进度保存在您的设备本地存储中。卸载应用会清除进度数据。</div>
         </div>
         <div class="faq-item">
           <div class="faq-q">Q：支持哪些设备？</div>
           <div class="faq-a">A：支持运行 iOS 15 及以上系统的 iPhone 和 iPad。</div>
         </div>
         <div class="faq-item">
-          <div class="faq-q">Q：紫微斗数排盘如何使用？</div>
-          <div class="faq-a">A：输入出生日期和时辰后，应用将生成专业的紫微命盘。点击任意宫位可查看该宫位的星曜详解和运势分析。</div>
-        </div>
-        <div class="faq-item">
-          <div class="faq-q">Q：云端祈福功能是什么？</div>
-          <div class="faq-a">A：云端祈福是每日更新的祈福活动，结合易经、道德经等经典智慧，提供平安、财运、姻缘等主题祈福。连续参与可获得里程碑祝福。</div>
+          <div class="faq-q">Q：课程内容是免费的吗？</div>
+          <div class="faq-a">A：是的，所有课程内容完全免费，没有应用内购买。</div>
         </div>
         <div class="faq-item">
           <div class="faq-q">Q：如何切换主题？</div>
-          <div class="faq-a">A：在「我的」页面选择主题切换，提供宇宙夜空、赛博朋克、新中式水墨、梦幻粉紫四种风格。</div>
+          <div class="faq-a">A：在「我的」页面选择主题切换，提供简约白、暖象牙、深色、霓虹夜四种风格。</div>
         </div>
       </div>
 
@@ -150,7 +155,7 @@
         <h2>联系支持</h2>
         <p>如遇到问题、功能建议或其他反馈，欢迎通过邮件联系我们。我们通常在 48 小时内回复。</p>
         <a href="mailto:nichuanfang@gmail.com" class="contact-link">📧 发送邮件至支持团队</a>
-        <p style="margin-top: 16px; font-size: 13px; color: rgba(255,255,255,0.4);">邮箱：nichuanfang@gmail.com</p>
+        <p style="margin-top: 16px; font-size: 13px; color: #94a3b8;">邮箱：nichuanfang@gmail.com</p>
       </div>
 
       <div class="card">
@@ -162,54 +167,49 @@
     <!-- ===== English Content ===== -->
     <div class="en">
       <div class="card">
-        <h2>About Cosmix</h2>
-        <p>Cosmix is an educational and entertainment app dedicated to traditional Chinese metaphysics, integrating seven classical systems:</p>
+        <h2>About Kaiwu</h2>
+        <p>Kaiwu is an educational app dedicated to Chinese traditional culture knowledge, offering structured courses:</p>
         <ul>
-          <li><strong>I Ching Divination</strong> — Complete 64-hexagram system with judgment texts and transformation analysis</li>
-          <li><strong>Plum Blossom Numerology</strong> — Body-Use framework with triple hexagram interaction</li>
-          <li><strong>Five Elements Analysis</strong> — Elemental balance assessment with philosophical mapping</li>
-          <li><strong>BaZi (Four Pillars)</strong> — Comprehensive Heavenly Stems and Earthly Branches analysis</li>
-          <li><strong>Ziwei Doushu</strong> — 14 main stars, 12 palaces with professional interactive chart</li>
-          <li><strong>Name Analysis</strong> — Five Grid method integrated with BaZi elements</li>
-          <li><strong>Couple Pairing</strong> — Multi-dimensional compatibility assessment</li>
+          <li><strong>I Ching Fundamentals</strong> — Taiji, Yin-Yang theory, Eight Trigrams, 64 Hexagrams</li>
+          <li><strong>Five Elements Theory</strong> — Generation/Overcoming cycles, correspondences, philosophy</li>
+          <li><strong>Heavenly Stems & Earthly Branches</strong> — Chinese calendar system, 60-year cycle</li>
+          <li><strong>Ziwei Doushu Introduction</strong> — 12 palaces, 14 main stars, star system</li>
+          <li><strong>BaZi Fundamentals</strong> — Four Pillars, Day Master, Ten Gods system</li>
+          <li><strong>Name Study Basics</strong> — Five Grid method, stroke analysis</li>
         </ul>
-        <p>All computations are performed locally on your device. We do not collect any personal data.</p>
-        <p style="color: rgba(255,255,255,0.4); font-size: 13px;">This app is for entertainment purposes only and does not constitute professional advice.</p>
+        <p>Each lesson includes interactive quizzes. All data is stored locally on your device.</p>
+        <p style="color: #94a3b8; font-size: 13px;">For cultural learning purposes only.</p>
       </div>
 
       <div class="card">
         <h2>Frequently Asked Questions</h2>
         <div class="faq-item">
           <div class="faq-q">Q: Does the app collect my personal information?</div>
-          <div class="faq-a">A: No. All features run entirely on your device. No account registration is required, and no data is uploaded to any server. See our <a href="privacy.html" class="text-link">Privacy Policy</a> for details.</div>
+          <div class="faq-a">A: No. All features run entirely on your device. No account required, no data uploaded. See our <a href="privacy.html" class="text-link">Privacy Policy</a>.</div>
         </div>
         <div class="faq-item">
-          <div class="faq-q">Q: Will my divination history be lost?</div>
-          <div class="faq-a">A: History is stored in your device's local storage. Uninstalling the app will clear history — we recommend using the favorites feature to save important results.</div>
+          <div class="faq-q">Q: Will my learning progress be lost?</div>
+          <div class="faq-a">A: Progress is stored locally. Uninstalling the app will clear progress data.</div>
         </div>
         <div class="faq-item">
           <div class="faq-q">Q: What devices are supported?</div>
           <div class="faq-a">A: iPhone and iPad running iOS 15 or later.</div>
         </div>
         <div class="faq-item">
-          <div class="faq-q">Q: How do I use the Ziwei Doushu chart?</div>
-          <div class="faq-a">A: Enter your birth date and time, and the app generates a professional destiny chart. Tap any palace to view detailed star interpretations and fortune analysis.</div>
-        </div>
-        <div class="faq-item">
-          <div class="faq-q">Q: What is the Cloud Blessing feature?</div>
-          <div class="faq-a">A: Cloud Blessing is a daily blessing activity that integrates classical wisdom from the I Ching, Tao Te Ching, and other texts. Participate consistently to unlock milestone blessings.</div>
+          <div class="faq-q">Q: Is the content free?</div>
+          <div class="faq-a">A: Yes, all courses are completely free with no in-app purchases.</div>
         </div>
         <div class="faq-item">
           <div class="faq-q">Q: How do I switch themes?</div>
-          <div class="faq-a">A: Go to the "Profile" tab to choose from four themes: Cosmic Night, Cyber Punk, Ink Wash, and Dream Purple.</div>
+          <div class="faq-a">A: Go to "Profile" tab to choose from four themes: Clean Light, Warm Ivory, Dark, and Neon Night.</div>
         </div>
       </div>
 
       <div class="card">
         <h2>Contact Support</h2>
-        <p>For any issues, feature requests, or feedback, please contact us via email. We typically respond within 48 hours.</p>
+        <p>For issues, feature requests, or feedback, please contact us via email. We typically respond within 48 hours.</p>
         <a href="mailto:nichuanfang@gmail.com" class="contact-link">📧 Email Support Team</a>
-        <p style="margin-top: 16px; font-size: 13px; color: rgba(255,255,255,0.4);">Email: nichuanfang@gmail.com</p>
+        <p style="margin-top: 16px; font-size: 13px; color: #94a3b8;">Email: nichuanfang@gmail.com</p>
       </div>
 
       <div class="card">
@@ -219,8 +219,8 @@
     </div>
 
     <div class="disclaimer">
-      © 2026 Nova · Cosmix (玄象)<br>
-      For entertainment purposes only. 仅供娱乐参考，不构成专业建议。
+      © 2026 Kaiwu · 开物<br>
+      For cultural learning purposes only. 仅供文化学习参考。
     </div>
   </div>
 
@@ -231,7 +231,6 @@
       document.getElementById('btn-zh').className = 'lang-btn' + (lang === 'zh' ? ' active' : '');
       document.getElementById('btn-en').className = 'lang-btn' + (lang === 'en' ? ' active' : '');
     }
-    // Auto-detect language
     if (!navigator.language.startsWith('zh')) switchLang('en');
   </script>
 </body>
